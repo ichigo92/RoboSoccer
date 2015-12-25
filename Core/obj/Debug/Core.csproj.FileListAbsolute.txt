@@ -1,0 +1,50 @@
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\Core.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\Core.pdb
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\protobuf-net.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\SlimDX.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\protobuf-net.pdb
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\bin\Debug\protobuf-net.xml
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\obj\Debug\Core.dll
+c:\users\usman_shahid\documents\visual studio 2010\Projects\SSLRig\Core\obj\Debug\Core.pdb
+C:\Users\usman_shahid\Documents\Visual Studio 2010\Projects\SSLRig\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\SSL\SSLRig\Core\obj\Debug\Core.pdb
+D:\SSL\SSLRig\Core\bin\Debug\Core.dll
+D:\SSL\SSLRig\Core\bin\Debug\Core.pdb
+D:\SSL\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.dll
+D:\SSL\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+D:\SSL\SSLRig\Core\bin\Debug\protobuf-net.dll
+D:\SSL\SSLRig\Core\bin\Debug\SlimDX.dll
+D:\SSL\SSLRig\Core\bin\Debug\protobuf-net.pdb
+D:\SSL\SSLRig\Core\bin\Debug\protobuf-net.xml
+D:\SSL\SSLRig\Core\obj\Debug\Core.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\obj\Debug\Core.pdb
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\bin\Debug\Core.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\bin\Debug\Core.pdb
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\bin\Debug\SlimDX.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\Core\obj\Debug\Core.dll
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\Core.pdb
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\Google.ProtocolBuffers.dll
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.dll
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\SlimDX.dll
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.pdb
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.xml
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\obj\Debug\Core.pdb
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\bin\Debug\Core.exe
+C:\Users\Mystery 92\Downloads\SSLRig-master\SSLRig-master\Core\obj\Debug\Core.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\obj\Debug\Core.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\obj\Debug\Core.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\Core.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\Core.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\Google.ProtocolBuffers.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\Google.ProtocolBuffers.Serialization.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\SlimDX.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\Core\bin\Debug\protobuf-net.xml

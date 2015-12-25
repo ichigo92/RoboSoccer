@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A159D32B-C0D4-42F8-AE42-4EB2E8638751}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSLRig.Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>DLL\Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers.Serialization">
+      <HintPath>DLL\Google.ProtocolBuffers.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>DLL\SlimDX.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Delegates.cs" />
+    <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Data\Packet\Custom\GrSimCommands.cs" />
+    <Compile Include="Data\Packet\Custom\GrSimPacket.cs" />
+    <Compile Include="Data\Packet\Custom\GrSimReplacement.cs" />
+    <Compile Include="Data\Packet\grSim_Commands.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>grSim_Commands.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\grSim_Packet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>grSim_Packet.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\grSim_Replacement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>grSim_Replacement.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\messages_robocup_ssl_detection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>messages_robocup_ssl_detection.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\messages_robocup_ssl_geometry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>messages_robocup_ssl_geometry.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\messages_robocup_ssl_refbox_log.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>messages_robocup_ssl_refbox_log.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\messages_robocup_ssl_wrapper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>messages_robocup_ssl_wrapper.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\referee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>referee.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Packet\savestate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>savestate.proto</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Structures\DataRepository.cs" />
+    <Compile Include="Data\Structures\GameConfiguration.cs" />
+    <Compile Include="Infrastructure\Communication\MulticastReceiver.cs" />
+    <Compile Include="Infrastructure\Communication\SSLRefereeReceiver.cs" />
+    <Compile Include="Intelligence\Planning\AIPlanner.cs" />
+    <Compile Include="Intelligence\Planning\DummyPlanner.cs" />
+    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Data\Structures\OutputRobotData.cs" />
+    <Compile Include="Data\Structures\RobotParameters.cs" />
+    <Compile Include="Data\Structures\SastaStack.cs" />
+    <Compile Include="Data\Structures\SSLPacketParser.cs" />
+    <Compile Include="Infrastructure\Communication\GRSimSender.cs" />
+    <Compile Include="Infrastructure\Communication\SSLVisionReceiver.cs" />
+    <Compile Include="Infrastructure\Communication\XBeeSender.cs" />
+    <Compile Include="Infrastructure\Control\PIDController.cs" />
+    <Compile Include="Intelligence\Planning\ManualPlanner.cs" />
+    <Compile Include="Interface\ICommBase.cs" />
+    <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\IDataSource.cs" />
+    <Compile Include="Interface\IExecutionEngine.cs" />
+    <Compile Include="Interface\IPacketReceiver.cs" />
+    <Compile Include="Interface\IPacketSender.cs" />
+    <Compile Include="Interface\IPlanner.cs" />
+    <Compile Include="Interface\IRobotData.cs" />
+    <Compile Include="Interface\IRobotInfo.cs" />
+    <Compile Include="Interface\ITask.cs" />
+    <Compile Include="Interface\IVisionData.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickModuleTutorial.cs" />
+    <Compile Include="Rig.cs" />
+    <Compile Include="Threading\ParallelProcessor.cs" />
+    <Compile Include="Threading\SingleProcessor.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Data\Packet\grSim_Commands.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>grSim_Commands.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\grSim_Packet.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>grSim_Packet.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\grSim_Replacement.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>grSim_Replacement.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\messages_robocup_ssl_detection.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>messages_robocup_ssl_detection.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\messages_robocup_ssl_geometry.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>messages_robocup_ssl_geometry.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\messages_robocup_ssl_refbox_log.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>messages_robocup_ssl_refbox_log.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\messages_robocup_ssl_wrapper.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>messages_robocup_ssl_wrapper.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\referee.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>referee.cs</LastGenOutput>
+    </None>
+    <None Include="Data\Packet\savestate.proto">
+      <Generator>ProtoBufTool</Generator>
+      <LastGenOutput>savestate.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

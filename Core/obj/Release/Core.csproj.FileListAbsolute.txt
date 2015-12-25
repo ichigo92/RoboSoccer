@@ -1,0 +1,29 @@
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\Core.dll
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\Core.pdb
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\Google.ProtocolBuffers.dll
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\Google.ProtocolBuffers.Serialization.dll
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\protobuf-net.dll
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\SlimDX.dll
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\protobuf-net.pdb
+E:\UsmanShahid\NET\SSLRig\Core\bin\Release\protobuf-net.xml
+E:\UsmanShahid\NET\SSLRig\Core\obj\Release\Core.dll
+E:\UsmanShahid\NET\SSLRig\Core\obj\Release\Core.pdb
+C:\Users\umer_javaid\Desktop\SSLRig\Core\bin\Release\Core.dll
+C:\Users\umer_javaid\Desktop\SSLRig\Core\bin\Release\Core.pdb
+C:\Users\umer_javaid\Desktop\SSLRig\Core\bin\Release\Google.ProtocolBuffers.dll
+C:\Users\umer_javaid\Desktop\SSLRig\Core\bin\Release\Google.ProtocolBuffers.Serialization.dll
+C:\Users\umer_javaid\Desktop\SSLRig\Core\bin\Release\SlimDX.dll
+C:\Users\umer_javaid\Desktop\SSLRig\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
+C:\Users\umer_javaid\Desktop\SSLRig\Core\obj\Release\Core.dll
+C:\Users\umer_javaid\Desktop\SSLRig\Core\obj\Release\Core.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\Core.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\Core.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\Google.ProtocolBuffers.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\Google.ProtocolBuffers.Serialization.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\protobuf-net.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\SlimDX.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\protobuf-net.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\bin\Release\protobuf-net.xml
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\obj\Release\Core.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\Core\obj\Release\Core.pdb

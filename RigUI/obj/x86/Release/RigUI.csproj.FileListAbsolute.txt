@@ -1,0 +1,56 @@
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\RigUI.exe.config
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\RigUI.exe
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\RigUI.pdb
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Properties.Resources.resources
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\RigUI.csproj.GenerateResource.Cache
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\RigUI.exe
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\RigUI.pdb
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\RigUI.RigUI.resources
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\RigUI.csprojResolveAssemblyReference.cache
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLRefereeSettings.resources
+E:\UsmanShahid\NET\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLVisionSettings.resources
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\Core.dll
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\protobuf-net.dll
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\Google.ProtocolBuffers.dll
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\SlimDX.dll
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\Core.pdb
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\protobuf-net.pdb
+E:\UsmanShahid\NET\SSLRig\RigUI\bin\Release\protobuf-net.xml
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\RigUI.exe.config
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\RigUI.exe
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\RigUI.pdb
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\Core.dll
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\Google.ProtocolBuffers.dll
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\SlimDX.dll
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\bin\Release\Core.pdb
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\RigUI.csprojResolveAssemblyReference.cache
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgDataRepositorySettings.resources
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLRefereeSettings.resources
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLVisionSettings.resources
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Properties.Resources.resources
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\RigUI.RigUI.resources
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\RigUI.csproj.GenerateResource.Cache
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\RigUI.exe
+C:\Users\umer_javaid\Desktop\SSLRig\RigUI\obj\x86\Release\RigUI.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\RigUI.exe.config
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.exe
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\RigUI.exe
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\RigUI.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\Core.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\protobuf-net.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\Google.ProtocolBuffers.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\SlimDX.dll
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\Core.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\protobuf-net.pdb
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\bin\Release\protobuf-net.xml
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.csprojResolveAssemblyReference.cache
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgDataRepositorySettings.resources
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLRefereeSettings.resources
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Dialog.DlgSSLVisionSettings.resources
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\SSLRig.RigUI.Properties.Resources.resources
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.RigUI.resources
+\\pdc\File Share\DEV\Umer Javaid\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.csproj.GenerateResource.Cache
+C:\Users\umer_javaid\Desktop\RIG 2015-02-20\SSLRig\RigUI\bin\Release\RigUI.exe.config
+C:\Users\umer_javaid\Desktop\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.exe
+C:\Users\umer_javaid\Desktop\RIG 2015-02-20\SSLRig\RigUI\obj\x86\Release\RigUI.pdb

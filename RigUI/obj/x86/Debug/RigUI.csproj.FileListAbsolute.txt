@@ -1,0 +1,35 @@
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\RigUI.csprojResolveAssemblyReference.cache
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgDataRepositorySettings.resources
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgSSLRefereeSettings.resources
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgSSLVisionSettings.resources
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\SSLRig.RigUI.Properties.Resources.resources
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\RigUI.RigUI.resources
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\RigUI.csproj.GenerateResource.Cache
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\RigUI.pdb
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\RigUI.exe.config
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\RigUI.exe
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\RigUI.pdb
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\Core.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\Google.ProtocolBuffers.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\SlimDX.dll
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\bin\Debug\Core.pdb
+C:\Users\umer_javaid\Desktop\RIG 2015-02-24\SSLRig\RigUI\obj\x86\Debug\RigUI.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\RigUI.csprojResolveAssemblyReference.cache
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgDataRepositorySettings.resources
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgSSLRefereeSettings.resources
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\SSLRig.RigUI.Dialog.DlgSSLVisionSettings.resources
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\SSLRig.RigUI.Properties.Resources.resources
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\RigUI.RigUI.resources
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\RigUI.csproj.GenerateResource.Cache
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\RigUI.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\obj\x86\Debug\RigUI.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\RigUI.exe.config
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\RigUI.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\RigUI.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\Core.exe
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\protobuf-net.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\Google.ProtocolBuffers.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\SlimDX.dll
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\Core.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\protobuf-net.pdb
+D:\FYP\VS Projects\fix and working\SSLRig-master\SSLRig-master\RigUI\bin\Debug\protobuf-net.xml
