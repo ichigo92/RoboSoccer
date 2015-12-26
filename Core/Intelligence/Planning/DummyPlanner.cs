@@ -88,7 +88,7 @@ namespace SSLRig.Core.Intelligence.Planning
         }
 
         //Should i change the name of this method??
-        double newAngle(int id)
+        public double GetNewOrientation(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] _robot=repo.InData.Own();
@@ -97,16 +97,16 @@ namespace SSLRig.Core.Intelligence.Planning
             PointF robot = new PointF((_robot[id].x - (_robot[id].x)), (_robot[id].y - (_robot[id].y)));
             PointF balls = new PointF((_balls[0].x-(_robot[id].x)),( _balls[0].y-(_robot[id].y)));
             //making our robot condinates as our origin of the field
-                double thetha = Math.Atan(balls.Y /balls. X);
+                double theta = Math.Atan(balls.Y /balls. X);
                 //Console.WriteLine("   Angle  "+RadianToDegree(thetha));
                 if ((balls.X < 0 && balls.Y < 0) || (balls.X < 0 && balls.Y > 0))
                 {
-                    thetha += 3.14;
-                    return thetha;
+                    theta += 3.14;
+                    return theta;
                  }
                 else
                 {
-                    return thetha;
+                    return theta;
                 }
         }
 
@@ -155,7 +155,7 @@ namespace SSLRig.Core.Intelligence.Planning
             double _distanceOne = DistanceBetweenTwoPoints(balls, robots);
             if (_distanceZero > _distanceOne)
             {
-                float angle = (float)newAngle(1);
+                float angle = (float)GetNewOrientation(1);
                 repo.OutData[1].Grab = true;
                 //repo.OutData[1].KickSpeed = 4;
                 repo.OutData[1].Spin = true;
@@ -163,7 +163,7 @@ namespace SSLRig.Core.Intelligence.Planning
             }
             else
             {
-                float angle = (float)newAngle(0);
+                float angle = (float)GetNewOrientation(0);
                 repo.OutData[0].Grab = true;
                 repo.OutData[0].Spin = true;
                 repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);  
@@ -174,9 +174,6 @@ namespace SSLRig.Core.Intelligence.Planning
         public double DistanceBetweenTwoPoints(PointF balls, PointF robots)
         {
             double distance = Math.Sqrt((Math.Pow((balls.X - robots.X), 2) + Math.Pow((balls.Y - robots.Y), 2)));
-            Console.WriteLine("Ball X: " + balls.X + " Ball Y: " + balls.Y);
-            Console.WriteLine("Robot X: " + robots.X + " Robot Y: " + robots.Y);
-            Console.WriteLine("Calculated Distance: " + distance);
             return distance;
         }
 
