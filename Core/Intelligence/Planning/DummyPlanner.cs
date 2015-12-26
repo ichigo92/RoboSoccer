@@ -87,7 +87,7 @@ namespace SSLRig.Core.Intelligence.Planning
             }
         }
 
-        //Should i change the name of this method
+        //Should i change the name of this method??
         double newAngle(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
