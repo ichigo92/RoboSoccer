@@ -160,7 +160,24 @@ namespace SSLRig.Core.Intelligence.Planning
             repo.OutData[1].SetPoint(2000, 2000, (4.71239F + 0.785398F));
         }
 
-
+        public void LineOfSight()
+        {
+            SSL_DetectionRobot[] _robots = repo.InData.Own();
+            SSL_DetectionBall[] _balls = repo.InData.GetBalls();
+            _balls[0].x = 0;
+            _balls[0].y = 0;
+            PointF[] threePoints = new PointF[3];
+            threePoints[0] = new PointF(_robots[0].x, _robots[0].y);
+            threePoints[1] = new PointF(_robots[1].x, _robots[1].y);
+            threePoints[2] = new PointF(_robots[2].x, _robots[2].y);
+            double k1 = Math.Sqrt((Math.Pow((threePoints[2].X - threePoints[0].X), 2) + Math.Pow((threePoints[2].Y - threePoints[0].Y), 2)));
+            double k2 = Math.Sqrt((Math.Pow((threePoints[2].X - threePoints[1].X), 2) + Math.Pow((threePoints[2].Y - threePoints[1].Y), 2)));
+            double x4, y4;
+            x4 = ((k1 * threePoints[1].X) + (k2 * threePoints[0].X)) / (k1 + k2);
+            y4 = ((k1 * threePoints[1].Y) + (k2 * threePoints[0].Y)) / (k1 + k2);
+            Console.WriteLine("Ball X=" + threePoints[2].X + "      " + "Ball Y=" + threePoints[2].Y);
+            Console.WriteLine("New X=" + x4 + "      " + "New Y=" + y4);
+        }
         public void FollowBall()
         {
             
