@@ -42,8 +42,8 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
             check++;
-         
-             FollowBall();
+            FollowBall();
+            Goal();
            // newAngle();
            // dummyAngle();
         }
@@ -88,7 +88,7 @@ namespace SSLRig.Core.Intelligence.Planning
         }
 
         //Should i change the name of this method??
-        double newAngle(int id)
+        public double GetNewOrientation(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] _robot=repo.InData.Own();
@@ -97,17 +97,39 @@ namespace SSLRig.Core.Intelligence.Planning
             PointF robot = new PointF((_robot[id].x - (_robot[id].x)), (_robot[id].y - (_robot[id].y)));
             PointF balls = new PointF((_balls[0].x-(_robot[id].x)),( _balls[0].y-(_robot[id].y)));
             //making our robot condinates as our origin of the field
-                double thetha = Math.Atan(balls.Y /balls. X);
+                double theta = Math.Atan(balls.Y /balls. X);
                 //Console.WriteLine("   Angle  "+RadianToDegree(thetha));
                 if ((balls.X < 0 && balls.Y < 0) || (balls.X < 0 && balls.Y > 0))
                 {
-                    thetha += 3.14;
-                    return thetha;
+                    theta += 3.14;
+                    return theta;
                  }
                 else
                 {
-                    return thetha;
+                    return theta;
                 }
+        }
+
+        public double GetNewOrientation(int id, PointF reference)
+        {
+            SSL_DetectionBall[] _balls = repo.InData.GetBalls();
+            SSL_DetectionRobot[] _robot = repo.InData.Own();
+            //making our robot condinates as our origin of the field
+            PointF robot_0 = new PointF(_robot[id].x, _robot[id].y);
+            PointF robot = new PointF((_robot[id].x - (_robot[id].x)), (_robot[id].y - (_robot[id].y)));
+            PointF balls = new PointF((reference.X - (_robot[id].x)), (reference.Y - (_robot[id].y)));
+            //making our robot condinates as our origin of the field
+            double theta = Math.Atan(balls.Y / balls.X);
+            //Console.WriteLine("   Angle  "+RadianToDegree(thetha));
+            if ((balls.X < 0 && balls.Y < 0) || (balls.X < 0 && balls.Y > 0))
+            {
+                theta += 3.14;
+                return theta;
+            }
+            else
+            {
+                return theta;
+            }
         }
 
         #region Convert_rad_to_degree_and_degree_to_rad
@@ -155,30 +177,70 @@ namespace SSLRig.Core.Intelligence.Planning
             double _distanceOne = DistanceBetweenTwoPoints(balls, robots);
             if (_distanceZero > _distanceOne)
             {
-                float angle = (float)newAngle(1);
+                float angle = (float)GetNewOrientation(1);
                 repo.OutData[1].Grab = true;
                 //repo.OutData[1].KickSpeed = 4;
                 repo.OutData[1].Spin = true;
                 repo.OutData[1].SetPoint(_balls[0].x - 105F, _balls[0].y, angle);
+                //Goal();
             }
             else
             {
-                float angle = (float)newAngle(0);
+                float angle = (float)GetNewOrientation(0);
                 repo.OutData[0].Grab = true;
                 repo.OutData[0].Spin = true;
-                repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);  
+                //repo.OutData[0].ChipSpeed = 2;
+                //repo.OutData[0].WVelocity =(float) 0.1;
+                repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);
+                //Goal();
             }
-
+            //Goal();
         }
 
         public double DistanceBetweenTwoPoints(PointF balls, PointF robots)
         {
             double distance = Math.Sqrt((Math.Pow((balls.X - robots.X), 2) + Math.Pow((balls.Y - robots.Y), 2)));
-            Console.WriteLine("Ball X: " + balls.X + " Ball Y: " + balls.Y);
-            Console.WriteLine("Robot X: " + robots.X + " Robot Y: " + robots.Y);
-            Console.WriteLine("Calculated Distance: " + distance);
             return distance;
         }
+
+        public void Goal() 
+        {
+            SSL_DetectionBall[] balls = repo.InData.GetBalls();
+            SSL_DetectionRobot[] robots = repo.InData.Own();
+            PointF ball = new PointF(balls[0].x, balls[0].y);
+            float x = Math.Abs(ball.X);
+            float y = ball.Y;
+            //if (x >= 2977 && x <= 3157)
+            //{
+            //    if (ball.Y >= -329 && ball.Y <= 380)
+            //    {
+            //        Console.WriteLine("GOAL!!!");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Balls Y: " + balls[0].y);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Balls X:" + balls[0].x);
+            //}
+
+            Random rand = new Random();
+            float _goalX = rand.Next(2977, 3157);
+            float _goalY = rand.Next(-329, 380);
+            Console.WriteLine("Goal X: " + _goalX);
+            Console.WriteLine("Goal Y: " + _goalY);
+            PointF goal = new PointF(_goalX, _goalY);
+
+            float orient =(float) GetNewOrientation(0, goal);
+            repo.OutData[0].Spin = true;
+            repo.OutData[0].Grab = true;
+            repo.OutData[0].KickSpeed = (float)5.5;
+            repo.OutData[0].SetPoint(repo.OutData[0].X,repo.OutData[0].Y, orient);
+            
+        }
+
 
 
         public void Pass(SSL_DetectionRobot user, SSL_DetectionRobot partner)
