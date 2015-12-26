@@ -42,8 +42,8 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
             check++;
-         
-             FollowBall();
+            Goal();
+             //FollowBall();
            // newAngle();
            // dummyAngle();
         }
@@ -175,6 +175,30 @@ namespace SSLRig.Core.Intelligence.Planning
         {
             double distance = Math.Sqrt((Math.Pow((balls.X - robots.X), 2) + Math.Pow((balls.Y - robots.Y), 2)));
             return distance;
+        }
+
+        public void Goal() 
+        {
+            SSL_DetectionBall[] balls = repo.InData.GetBalls();
+            PointF ball = new PointF(balls[0].x, balls[0].y);
+            float x = Math.Abs(ball.X);
+            float y = ball.Y;
+            if (x >= 2977 && x <= 3157)
+            {
+                if (ball.Y >= -329 && ball.Y <= 380)
+                {
+                    Console.WriteLine("GOAL!!!");
+                }
+                else
+                {
+                    Console.WriteLine("Balls Y: " + balls[0].y);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Balls X:" + balls[0].x);
+            }
+            
         }
 
 
