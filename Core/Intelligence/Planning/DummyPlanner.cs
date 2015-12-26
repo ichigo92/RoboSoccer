@@ -182,7 +182,6 @@ namespace SSLRig.Core.Intelligence.Planning
                 //repo.OutData[1].KickSpeed = 4;
                 repo.OutData[1].Spin = true;
                 repo.OutData[1].SetPoint(_balls[0].x - 105F, _balls[0].y, angle);
-                //Goal();
             }
             else
             {
@@ -192,9 +191,7 @@ namespace SSLRig.Core.Intelligence.Planning
                 //repo.OutData[0].ChipSpeed = 2;
                 //repo.OutData[0].WVelocity =(float) 0.1;
                 repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);
-                //Goal();
             }
-            //Goal();
         }
 
         public double DistanceBetweenTwoPoints(PointF balls, PointF robots)
