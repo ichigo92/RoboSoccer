@@ -32,8 +32,8 @@ namespace SSLRig.Core.Intelligence.Planning
 
         public void Plan()
         {
-           // FollowOpponent();
-            
+            //FollowOpponent();
+
             SSL_DetectionRobot[] _robots = repo.InData.Own();
             int check = 1;
             if (check == 1)
