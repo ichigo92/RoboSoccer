@@ -86,6 +86,8 @@ namespace SSLRig.Core.Intelligence.Planning
                 }
             }
         }
+
+
         double newAngle(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
@@ -107,13 +109,16 @@ namespace SSLRig.Core.Intelligence.Planning
                     return thetha;
                 }
         }
+
         #region Convert_rad_to_degree_and_degree_to_rad
+        
         public static float DegreeToRadian(float degree)
         {
             float rad;
             rad = (float)(degree * Math.PI / 180);
             return rad;
         }
+
         public float RadianToDegree(double rad)
         {
             float degree;
@@ -122,6 +127,7 @@ namespace SSLRig.Core.Intelligence.Planning
         }
 
         #endregion
+        
         public void fieldCalculator()
         {
             SSL_DetectionRobot[] _robots = repo.InData.Own();
@@ -131,6 +137,8 @@ namespace SSLRig.Core.Intelligence.Planning
             Console.WriteLine(_robots[0].orientation);
             repo.OutData[1].SetPoint(2000, 2000, (4.71239F + 0.785398F));
         }
+
+
         public void FollowBall()
         {
             
@@ -171,13 +179,26 @@ namespace SSLRig.Core.Intelligence.Planning
             Console.WriteLine("Calculated Distance: " + distance);
             return distance;
         }
-        int pick_robot(int robot_one_id, float distance_r1, int robot_two_id, float distance_r2)
+
+
+        public void Pass(SSL_DetectionRobot user, SSL_DetectionRobot partner)
         {
-            if (distance_r1 > distance_r2)
-                return robot_one_id;
+
+            if (user.y == partner.y && user.x < partner.x)
+            {
+                user.orientation = DegreeToRadian(180);
+                repo.OutData[(int)user.robot_id].KickSpeed = 3;
+            }
             else
-                return robot_two_id;
+            {
+                Console.WriteLine("User Y: " + user.y);
+                Console.WriteLine("Partner Y: " + partner.y);
+                Console.WriteLine("User X: " + user.y);
+                Console.WriteLine("Partner X: " + partner.x);
+            }
+
         }
+
         #endregion
     }
 }
