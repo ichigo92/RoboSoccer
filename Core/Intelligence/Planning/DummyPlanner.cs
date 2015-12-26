@@ -32,8 +32,8 @@ namespace SSLRig.Core.Intelligence.Planning
 
         public void Plan()
         {
-           // FollowOpponent();
-            
+            //FollowOpponent();
+
             SSL_DetectionRobot[] _robots = repo.InData.Own();
             int check = 1;
             if (check == 1)
@@ -87,7 +87,7 @@ namespace SSLRig.Core.Intelligence.Planning
             }
         }
 
-
+        //Should i change the name of this method??
         double newAngle(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
