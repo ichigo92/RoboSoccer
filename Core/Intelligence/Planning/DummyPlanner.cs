@@ -19,7 +19,7 @@ namespace SSLRig.Core.Intelligence.Planning
         protected IRepository repo;
         protected GetNextTasks getNextTasks;
         protected SSL_Referee refereeCommand;
-
+        bool meraGlobalBool=false;
         public IRepository Repository
         {
             get { return repo; }
@@ -42,8 +42,13 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
             check++;
-            FollowBall();
-            Goal();
+            if (!meraGlobalBool)
+                FollowBall();
+            else
+            {
+
+                Goal((int)_robots[1].robot_id);
+            }
            // newAngle();
            // dummyAngle();
         }
@@ -180,34 +185,53 @@ namespace SSLRig.Core.Intelligence.Planning
         }
         public void FollowBall()
         {
-            
+           
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] _robots = repo.InData.Own();
           
             PointF balls = new PointF(_balls[0].x, _balls[0].y);
-            PointF robots = new PointF(_robots[0].x, _robots[0].y);
-            double _distanceZero = DistanceBetweenTwoPoints(balls, robots);
-
-            robots.X = _robots[1].x;
-            robots.Y = _robots[1].y;
+            PointF []robots=new PointF[2];
+            robots[0] = new PointF(_robots[0].x, _robots[0].y);
+            double _distanceZero = DistanceBetweenTwoPoints(balls, robots[0]);
+            robots[1] = new PointF(_robots[1].x, _robots[1].y);
             //repo.OutData[0].WVelocity = (float)30;
-            double _distanceOne = DistanceBetweenTwoPoints(balls, robots);
+            double _distanceOne = DistanceBetweenTwoPoints(balls, robots[1]);
             if (_distanceZero > _distanceOne)
             {
-                float angle = (float)GetNewOrientation(1);
-                repo.OutData[1].Grab = true;
+                Console.WriteLine("Robot one");
+                float angle = (float)GetNewOrientation(1); 
                 //repo.OutData[1].KickSpeed = 4;
-                repo.OutData[1].Spin = true;
+                
                 repo.OutData[1].SetPoint(_balls[0].x - 105F, _balls[0].y, angle);
+                Console.WriteLine("Before If: X" + robots[1].X + " Y:" + robots[1].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
+                if ((robots[1].X < (balls.X)&&((robots[1].X) > (balls.X - 110F)) )&& ((robots[1].Y-100F)<balls.Y&&(robots[1].Y)>(balls.Y-105F)))
+                {
+                    repo.OutData[1].Spin = true;
+                    meraGlobalBool = repo.OutData[1].Spin;
+                    repo.OutData[0].Spin = false;
+                    repo.OutData[1].Grab = true;
+                    repo.OutData[0].Grab = false;
+                    Console.WriteLine("after If: X" + robots[1].X + " Y:" + robots[1].Y + "Balls X: " + (balls.X-105F) + " Balls Y: " + balls.Y);
+                }
+                
             }
             else
             {
+                Console.WriteLine("Robot Zero");
                 float angle = (float)GetNewOrientation(0);
                 repo.OutData[0].Grab = true;
-                repo.OutData[0].Spin = true;
                 //repo.OutData[0].ChipSpeed = 2;
                 //repo.OutData[0].WVelocity =(float) 0.1;
                 repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);
+                Console.WriteLine("Before If: X" + robots[0].X + " Y:" + robots[0].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
+                if ((robots[0].X < (balls.X) && ((robots[0].X) > (balls.X - 105F))) && (robots[0].Y < balls.Y && (robots[0].Y - 100F) > balls.Y))
+                {
+                    repo.OutData[0].Spin = true;
+                    repo.OutData[1].Spin = false;
+                    repo.OutData[0].Grab = true;
+                    repo.OutData[1].Grab = false;
+                    Console.WriteLine("After If: X" + robots[0].X + " Y:" + robots[0].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
+                }
             }
         }
 
@@ -217,29 +241,13 @@ namespace SSLRig.Core.Intelligence.Planning
             return distance;
         }
 
-        public void Goal() 
+        public void Goal(int robot_id) 
         {
             SSL_DetectionBall[] balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] robots = repo.InData.Own();
             PointF ball = new PointF(balls[0].x, balls[0].y);
             float x = Math.Abs(ball.X);
             float y = ball.Y;
-            //if (x >= 2977 && x <= 3157)
-            //{
-            //    if (ball.Y >= -329 && ball.Y <= 380)
-            //    {
-            //        Console.WriteLine("GOAL!!!");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Balls Y: " + balls[0].y);
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Balls X:" + balls[0].x);
-            //}
-
             Random rand = new Random();
             float _goalX = rand.Next(2977, 3157);
             float _goalY = rand.Next(-329, 380);
@@ -247,12 +255,27 @@ namespace SSLRig.Core.Intelligence.Planning
             Console.WriteLine("Goal Y: " + _goalY);
             PointF goal = new PointF(_goalX, _goalY);
 
-            float orient =(float) GetNewOrientation(0, goal);
-            repo.OutData[0].Spin = true;
-            repo.OutData[0].Grab = true;
-            repo.OutData[0].KickSpeed = (float)5.5;
-            repo.OutData[0].SetPoint(repo.OutData[0].X,repo.OutData[0].Y, orient);
+            float orient =(float) GetNewOrientation(robot_id, goal);
+            PointF add = new PointF(500, 0F);
+            Console.WriteLine("New Ball X: "+(ball.X + add.X));
+            repo.OutData[robot_id].SetPoint(ball.X+add.X,repo.OutData[robot_id].Y, orient);
+            if (CheckOrientation(robot_id, orient))
+            {
+                repo.OutData[robot_id].KickSpeed = (float)5.5;
+            }
             
+        }
+
+        public bool CheckOrientation(int robot_id,float orient)
+        {
+            SSL_DetectionRobot [] _robots = repo.InData.Own();
+            if (_robots[robot_id].orientation - 0.1F < orient && _robots[robot_id].orientation > orient - 0.1F)
+            {
+                Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient+" X:"+_robots[robot_id].x);
+                return true;
+            }
+            Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient);
+            return false;
         }
 
 
