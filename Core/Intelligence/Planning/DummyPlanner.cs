@@ -21,6 +21,7 @@ namespace SSLRig.Core.Intelligence.Planning
         protected SSL_Referee refereeCommand;
         bool meraGlobalBool=false;
         bool meraAkOrGlobalBool = false;
+        #region class basic funtions
         public IRepository Repository
   
         {
@@ -31,7 +32,7 @@ namespace SSLRig.Core.Intelligence.Planning
         public void Initialize()
         {
         }
-
+        #endregion
         public void Plan()
         {
             //FollowOpponent();
@@ -56,7 +57,7 @@ namespace SSLRig.Core.Intelligence.Planning
            // newAngle();
            // dummyAngle();
         }
-
+        #region basic functions
         public IRobotInfo[] PlanExclusive(Data.Packet.SSL_WrapperPacket mainPacket)
         {
             return null;
@@ -82,7 +83,7 @@ namespace SSLRig.Core.Intelligence.Planning
         {
             refereeCommand = command;
         }
-
+        #endregion
         #region Behaviors
 
         public void FollowOpponent()
