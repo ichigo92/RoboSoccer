@@ -165,7 +165,7 @@ namespace SSLRig.Core.Intelligence.Planning
             repo.OutData[1].SetPoint(2000, 2000, (4.71239F + 0.785398F));
         }
 
-        public void LineOfSight()
+        public bool LineOfSight()
         {
             SSL_DetectionRobot[] _robots = repo.InData.Own();
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
@@ -182,6 +182,11 @@ namespace SSLRig.Core.Intelligence.Planning
             y4 = ((k1 * threePoints[1].Y) + (k2 * threePoints[0].Y)) / (k1 + k2);
             Console.WriteLine("Ball X=" + threePoints[2].X + "      " + "Ball Y=" + threePoints[2].Y);
             Console.WriteLine("New X=" + x4 + "      " + "New Y=" + y4);
+            if ((threePoints[2].X >= (x4 - 6F) || threePoints[2].X <= (x4 + 6F)) && (threePoints[2].Y >= (y4 - 6F) || (threePoints[2].Y <= (y4 + 6F))))
+            {
+                return true;  //if line of sight is not clear
+            }
+            return false;
         }
         public void FollowBall()
         {
@@ -282,10 +287,11 @@ namespace SSLRig.Core.Intelligence.Planning
 
         public void Pass(SSL_DetectionRobot user, SSL_DetectionRobot partner)
         {
+            PointF partnerlocation = new PointF(partner.x, partner.y);
 
-            if (user.y == partner.y && user.x < partner.x)
+            if (!LineOfSight())
             {
-                user.orientation = DegreeToRadian(180);
+                user.orientation =(float) GetNewOrientation((int)user.robot_id, partnerlocation);
                 repo.OutData[(int)user.robot_id].KickSpeed = 3;
             }
             else
