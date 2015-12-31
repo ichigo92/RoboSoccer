@@ -20,7 +20,9 @@ namespace SSLRig.Core.Intelligence.Planning
         protected GetNextTasks getNextTasks;
         protected SSL_Referee refereeCommand;
         bool meraGlobalBool=false;
+        bool meraAkOrGlobalBool = false;
         public IRepository Repository
+  
         {
             get { return repo; }
             set { repo = value; }
@@ -42,12 +44,14 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
             check++;
-            if (!meraGlobalBool)
+            if (!meraGlobalBool&&!meraAkOrGlobalBool)
                 FollowBall();
             else
             {
-
-                Goal((int)_robots[1].robot_id);
+                if(meraGlobalBool)
+                    Goal((int)_robots[1].robot_id);
+                if(meraAkOrGlobalBool)
+                    Goal((int)_robots[0].robot_id);
             }
            // newAngle();
            // dummyAngle();
@@ -93,6 +97,7 @@ namespace SSLRig.Core.Intelligence.Planning
         }
 
         //Should i change the name of this method??
+        #region Orientation
         public double GetNewOrientation(int id)
         {
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
@@ -136,9 +141,20 @@ namespace SSLRig.Core.Intelligence.Planning
                 return theta;
             }
         }
+        public bool CheckOrientation(int robot_id, float orient)
+        {
+            SSL_DetectionRobot[] _robots = repo.InData.Own();
+            if (_robots[robot_id].orientation - 0.1F < orient && _robots[robot_id].orientation > orient - 0.1F)
+            {
+                Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient + " X:" + _robots[robot_id].x);
+                return true;
+            }
+            Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient);
+            return false;
+        }
+        #endregion
+        #region supporting funtions
 
-        #region Convert_rad_to_degree_and_degree_to_rad
-        
         public static float DegreeToRadian(float degree)
         {
             float rad;
@@ -152,9 +168,6 @@ namespace SSLRig.Core.Intelligence.Planning
             degree = (float)(rad * 180/Math.PI);
             return degree;
         }
-
-        #endregion
-        
         public void fieldCalculator()
         {
             SSL_DetectionRobot[] _robots = repo.InData.Own();
@@ -164,6 +177,12 @@ namespace SSLRig.Core.Intelligence.Planning
             Console.WriteLine(_robots[0].orientation);
             repo.OutData[1].SetPoint(2000, 2000, (4.71239F + 0.785398F));
         }
+        public double DistanceBetweenTwoPoints(PointF balls, PointF robots)
+        {
+            double distance = Math.Sqrt((Math.Pow((balls.X - robots.X), 2) + Math.Pow((balls.Y - robots.Y), 2)));
+            return distance;
+        }
+        #endregion
 
         public bool LineOfSight()
         {
@@ -188,6 +207,7 @@ namespace SSLRig.Core.Intelligence.Planning
             }
             return false;
         }
+        #region following
         public void FollowBall()
         {
            
@@ -216,6 +236,7 @@ namespace SSLRig.Core.Intelligence.Planning
                     repo.OutData[0].Spin = false;
                     repo.OutData[1].Grab = true;
                     repo.OutData[0].Grab = false;
+                    repo.OutData[1].KickSpeed = 0.0F;
                     Console.WriteLine("after If: X" + robots[1].X + " Y:" + robots[1].Y + "Balls X: " + (balls.X-105F) + " Balls Y: " + balls.Y);
                 }
                 
@@ -229,23 +250,25 @@ namespace SSLRig.Core.Intelligence.Planning
                 //repo.OutData[0].WVelocity =(float) 0.1;
                 repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);
                 Console.WriteLine("Before If: X" + robots[0].X + " Y:" + robots[0].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
-                if ((robots[0].X < (balls.X) && ((robots[0].X) > (balls.X - 105F))) && (robots[0].Y < balls.Y && (robots[0].Y - 100F) > balls.Y))
+                if ((robots[0].X < (balls.X) && ((robots[0].X) > (balls.X - 110F))) && ((robots[0].Y - 100F) < balls.Y && (robots[0].Y) > (balls.Y - 105F)))
                 {
                     repo.OutData[0].Spin = true;
+                    meraAkOrGlobalBool = repo.OutData[0].Spin;
+                    
                     repo.OutData[1].Spin = false;
+
+                    repo.OutData[0].KickSpeed = 0.0F;
+
                     repo.OutData[0].Grab = true;
                     repo.OutData[1].Grab = false;
+
                     Console.WriteLine("After If: X" + robots[0].X + " Y:" + robots[0].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
                 }
             }
         }
+        #endregion
 
-        public double DistanceBetweenTwoPoints(PointF balls, PointF robots)
-        {
-            double distance = Math.Sqrt((Math.Pow((balls.X - robots.X), 2) + Math.Pow((balls.Y - robots.Y), 2)));
-            return distance;
-        }
-
+        #region Goal
         public void Goal(int robot_id) 
         {
             SSL_DetectionBall[] balls = repo.InData.GetBalls();
@@ -266,25 +289,14 @@ namespace SSLRig.Core.Intelligence.Planning
             repo.OutData[robot_id].SetPoint(ball.X+add.X,repo.OutData[robot_id].Y, orient);
             if (CheckOrientation(robot_id, orient))
             {
-                repo.OutData[robot_id].KickSpeed = (float)5.5;
+                repo.OutData[robot_id].KickSpeed = (float)3.3;
+                meraGlobalBool = false;
+                meraAkOrGlobalBool = false;
             }
             
         }
-
-        public bool CheckOrientation(int robot_id,float orient)
-        {
-            SSL_DetectionRobot [] _robots = repo.InData.Own();
-            if (_robots[robot_id].orientation - 0.1F < orient && _robots[robot_id].orientation > orient - 0.1F)
-            {
-                Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient+" X:"+_robots[robot_id].x);
-                return true;
-            }
-            Console.WriteLine("Current Orientation: " + _robots[robot_id].orientation + " Desired Orientation: " + orient);
-            return false;
-        }
-
-
-
+        #endregion
+        
         public void Pass(SSL_DetectionRobot user, SSL_DetectionRobot partner)
         {
             PointF partnerlocation = new PointF(partner.x, partner.y);
