@@ -21,7 +21,6 @@ namespace SSLRig.Core.Intelligence.Planning
         protected SSL_Referee refereeCommand;
         bool meraGlobalBool=false;
         bool meraAkOrGlobalBool = false;
-        #region class basic funtions
         public IRepository Repository
   
         {
@@ -32,7 +31,7 @@ namespace SSLRig.Core.Intelligence.Planning
         public void Initialize()
         {
         }
-        #endregion
+        
         public void Plan()
         {
             //FollowOpponent();
@@ -45,19 +44,28 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
             check++;
-            if (!meraGlobalBool&&!meraAkOrGlobalBool)
-                FollowBall();
+            if (!BallInPossession())
+            {
+                if (!meraGlobalBool && !meraAkOrGlobalBool)
+                    FollowBall();
+                else
+                {
+                    //Pass(_robots[0], _robots[1]);
+                    if (meraGlobalBool)
+                        Goal((int)_robots[1].robot_id);
+                    if (meraAkOrGlobalBool)
+                        Goal((int)_robots[0].robot_id);
+                }
+
+
+            }
             else
             {
-                if(meraGlobalBool)
-                    Goal((int)_robots[1].robot_id);
-                if(meraAkOrGlobalBool)
-                    Goal((int)_robots[0].robot_id);
+                FollowOpponent();
+                //CoverGoal();      //for team yellow
             }
-           // newAngle();
-           // dummyAngle();
+            
         }
-        #region basic functions
         public IRobotInfo[] PlanExclusive(Data.Packet.SSL_WrapperPacket mainPacket)
         {
             return null;
@@ -83,7 +91,7 @@ namespace SSLRig.Core.Intelligence.Planning
         {
             refereeCommand = command;
         }
-        #endregion
+        
         #region Behaviors
 
         public void FollowOpponent()
@@ -92,11 +100,19 @@ namespace SSLRig.Core.Intelligence.Planning
             {
                 if (robot != null)
                 {
-                    repo.OutData[(int)robot.robot_id].SetPoint(robot.x, robot.y, robot.orientation);
+                    repo.OutData[(int)robot.robot_id].SetPoint(robot.x-120, robot.y-120, robot.orientation);
                 }
             }
         }
-
+        public void CoverGoal()
+        {
+            SSL_DetectionRobot[] _robots = repo.InData.Own();
+            PointF robotOne = new PointF(_robots[0].x, _robots[0].y);
+            PointF robotTwo = new PointF(_robots[1].x, _robots[1].y);
+            repo.OutData[0].SetPoint(2555.765F,371.4709F,3.14159F);
+            repo.OutData[1].SetPoint(2374.302F, -118.5285F, 3.14159F);
+       
+        }
         //Should i change the name of this method??
         #region Orientation
         public double GetNewOrientation(int id)
@@ -268,7 +284,29 @@ namespace SSLRig.Core.Intelligence.Planning
             }
         }
         #endregion
-
+        #region In possession
+        public bool BallInPossession()
+        {
+            SSL_DetectionRobot[] _opponentRobots = repo.InData.Opponent() ;
+            SSL_DetectionBall[] _balls = repo.InData.GetBalls();
+            PointF balls = new PointF(_balls[0].x, _balls[0].y);
+            PointF opponentRobotOne = new PointF(_opponentRobots[0].x, _opponentRobots[0].y);
+            PointF opponentRobotTwo = new PointF(_opponentRobots[1].x, _opponentRobots[1].y);
+            double distanceOfOpponentRobotOne=DistanceBetweenTwoPoints(balls,opponentRobotOne);
+            double distanceOfOpponentRobotTwo = DistanceBetweenTwoPoints(balls, opponentRobotTwo);
+            Console.WriteLine(distanceOfOpponentRobotOne);
+            if (120 > distanceOfOpponentRobotOne&&distanceOfOpponentRobotOne > 107 || 120 > distanceOfOpponentRobotTwo && distanceOfOpponentRobotTwo > 107)
+            {
+                Console.WriteLine("I am true");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("I am false");
+                return false;
+            }
+        }
+        #endregion
         #region Goal
         public void Goal(int robot_id) 
         {
@@ -293,6 +331,14 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[robot_id].KickSpeed = (float)3.3;
                 meraGlobalBool = false;
                 meraAkOrGlobalBool = false;
+            }
+            if (meraGlobalBool)
+            {
+                Pass(robots[1],robots[0]);
+            }
+            if (meraAkOrGlobalBool)
+            {
+                Pass(robots[0], robots[1]);
             }
             
         }
