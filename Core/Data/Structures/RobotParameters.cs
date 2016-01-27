@@ -207,5 +207,20 @@ namespace SSLRig.Core.Data.Structures
             Y = y;
             W = w;
         }
+
+        public void Reset()
+        {
+            ChipSpeed = 0F;
+            Grab = true;
+            KickSpeed = 0F;
+            W = W;
+            WVelocity = 0F;
+            WheelSpeed = false;
+            XVelocity = 0F;
+            YVelocity = 0F;
+            Spin = Spin;
+            Console.WriteLine("Robot " + Id + "Reset");
+        }
+
     }
 }
