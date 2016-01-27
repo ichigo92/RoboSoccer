@@ -43,32 +43,45 @@ namespace SSLRig.Core.Intelligence.Planning
                 repo.OutData[0].SetPoint(_robots[0].x, _robots[0].y, _robots[0].orientation);
                 repo.OutData[1].SetPoint(_robots[1].x, _robots[1].y, _robots[1].orientation);
             }
+           // repo.OutData[0].Reset();
             check++;
-            //if (!BallInPossession())
-            //{
-            //    if (!meraGlobalBool && !meraAkOrGlobalBool)
-            //        FollowBall();
-            //    else
-            //    {
-            //        //Pass(_robots[0], _robots[1]);
-            //        if (meraGlobalBool)
-            //            Goal((int)_robots[1].robot_id);
-            //        if (meraAkOrGlobalBool)
-            //            Goal((int)_robots[0].robot_id);
-            //    }
+            if (!BallInPossession())
+            {
+                foreach (var robot in repo.InData.Own())
+                {
+                    if (robot != null)
+                    {
+                        repo.OutData[(int)robot.robot_id].ChipSpeed=0F;
+                    }
+                }
+                if (!BallInPosession(0) && !BallInPosession(1)) //checking of posession of ball of our robots
+                {
+                    FollowBall();
+                }
+                //else
+                //{
+                    //Pass(_robots[0], _robots[1]);
+                    if (/*meraGlobalBool &&*/ BallInPosession(1))
+                        Goal((int)_robots[1].robot_id);
+                    if (/*meraAkOrGlobalBool &&*/ BallInPosession(0))
+                        Goal((int)_robots[0].robot_id);
+                //}
 
 
-            //}
-            //else
-            //{
-            //    FollowOpponent();
-            //    //CoverGoal();      //for team yellow
-            //}
+            }
+            else
+            {
+                FollowOpponent();
+                FollowBall();
+                //CoverGoal();      //for team yellow
+            }
             //Goal((int)_robots[0].robot_id);
             //PointF goalpoints = new PointF(3067F, -277F);
             //repo.OutData[0].SetPoint(3067F, -277F, (float)GetNewOrientation(0, goalpoints));
             //DistanceFromGoal(0);
-            Pass(_robots[0],_robots[1]);
+            //Pass(_robots[0],_robots[1]);
+            //Goal((int)_robots[0].robot_id);
+            
         }
         public IRobotInfo[] PlanExclusive(Data.Packet.SSL_WrapperPacket mainPacket)
         {
@@ -224,9 +237,18 @@ namespace SSLRig.Core.Intelligence.Planning
             Console.WriteLine("New X=" + x4 + "      " + "New Y=" + y4);
             if ((threePoints[2].X >= (x4 - 6F) || threePoints[2].X <= (x4 + 6F)) && (threePoints[2].Y >= (y4 - 6F) || (threePoints[2].Y <= (y4 + 6F))))
             {
+                //Console.WriteLine("Robot 2.X : "+threePoints[2].X);
+                //Console.WriteLine("X4-6F : " +(x4 - 6F));
+                //Console.WriteLine("X4+6F : " + (x4 + 6F));
+                //Console.WriteLine("Robot 2.Y : " + threePoints[2].Y);
+                //Console.WriteLine("Y4-6F : " + (y4 - 6F));
+                //Console.WriteLine("Y4+6F : " + (y4 + 6F));
                 return true;  //if line of sight is not clear
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
         #region following
         public void FollowBall()
@@ -234,7 +256,7 @@ namespace SSLRig.Core.Intelligence.Planning
            
             SSL_DetectionBall[] _balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] _robots = repo.InData.Own();
-          
+
             PointF balls = new PointF(_balls[0].x, _balls[0].y);
             PointF []robots=new PointF[2];
             robots[0] = new PointF(_robots[0].x, _robots[0].y);
@@ -246,8 +268,8 @@ namespace SSLRig.Core.Intelligence.Planning
             {
                 //Console.WriteLine("Robot one");
                 float angle = (float)GetNewOrientation(1); 
-                //repo.OutData[1].KickSpeed = 4;
-                
+                repo.OutData[1].KickSpeed = 0F;
+                repo.OutData[1].Grab = true;
                 repo.OutData[1].SetPoint(_balls[0].x - 105F, _balls[0].y, angle);
                 //Console.WriteLine("Before If: X" + robots[1].X + " Y:" + robots[1].Y + "Balls X: " + balls.X + " Balls Y: " + balls.Y);
                 if ((robots[1].X < (balls.X)&&((robots[1].X) > (balls.X - 110F)) )&& ((robots[1].Y-100F)<balls.Y&&(robots[1].Y)>(balls.Y-105F)))
@@ -257,7 +279,7 @@ namespace SSLRig.Core.Intelligence.Planning
                     repo.OutData[0].Spin = false;
                     repo.OutData[1].Grab = true;
                     repo.OutData[0].Grab = false;
-                    repo.OutData[1].KickSpeed = 0.0F;
+                    //repo.OutData[1].KickSpeed = 0.0F;
                     //Console.WriteLine("after If: X" + robots[1].X + " Y:" + robots[1].Y + "Balls X: " + (balls.X-105F) + " Balls Y: " + balls.Y);
                 }
                 
@@ -266,7 +288,9 @@ namespace SSLRig.Core.Intelligence.Planning
             {
                 //Console.WriteLine("Robot Zero");
                 float angle = (float)GetNewOrientation(0);
+                repo.OutData[0].KickSpeed=0F;
                 repo.OutData[0].Grab = true;
+
                 //repo.OutData[0].ChipSpeed = 2;
                 //repo.OutData[0].WVelocity =(float) 0.1;
                 repo.OutData[0].SetPoint(_balls[0].x - 105F, _balls[0].y,angle);
@@ -275,10 +299,10 @@ namespace SSLRig.Core.Intelligence.Planning
                 {
                     repo.OutData[0].Spin = true;
                     meraAkOrGlobalBool = repo.OutData[0].Spin;
-                    
+                    //repo.OutData[0].ChipSpeed = 2F;
                     repo.OutData[1].Spin = false;
 
-                    repo.OutData[0].KickSpeed = 0.0F;
+                    //repo.OutData[0].KickSpeed = 0.0F;
 
                     repo.OutData[0].Grab = true;
                     repo.OutData[1].Grab = false;
@@ -289,6 +313,7 @@ namespace SSLRig.Core.Intelligence.Planning
         }
         #endregion
         #region In possession
+        //Checking of Ball Posession by the Opponent
         public bool BallInPossession()
         {
             SSL_DetectionRobot[] _opponentRobots = repo.InData.Opponent() ;
@@ -310,6 +335,22 @@ namespace SSLRig.Core.Intelligence.Planning
                 return false;
             }
         }
+
+        public bool BallInPosession(int robot_id)
+        {
+            SSL_DetectionBall[] balls = repo.InData.GetBalls();
+            SSL_DetectionRobot robots = repo.InData.Own()[robot_id];
+            PointF ball = new PointF(balls[0].x, balls[0].y);
+            PointF robot = new PointF(robots.x, robots.y);
+            double distance = DistanceBetweenTwoPoints(robot, ball);
+            if (distance <= 105 && distance > 100)
+            {
+                Console.WriteLine("Ball Grabbed");
+                return true;
+            }
+            Console.WriteLine("Ball NOT Grabbed");
+            return false;
+        }
         #endregion
         #region Goal
         public double DistanceFromGoal(int _id)
@@ -326,18 +367,19 @@ namespace SSLRig.Core.Intelligence.Planning
         }
         public void Goal(int robot_id) 
         {
-            SSL_DetectionBall[] balls = repo.InData.GetBalls();
+            //SSL_DetectionBall[] balls = repo.InData.GetBalls();
             SSL_DetectionRobot[] robots = repo.InData.Own();
-            PointF ball = new PointF(balls[0].x, balls[0].y);
-            float x = Math.Abs(ball.X);
-            float y = ball.Y;
+            //PointF ball = new PointF(balls[0].x, balls[0].y);
+            //float x = Math.Abs(ball.X);
+            //float y = ball.Y;
             Random rand = new Random();
-            float _goalX = rand.Next(2977, 3157);
-            float _goalY = rand.Next(-329, 380);
+            //float _goalX = rand.Next(2977, 3157);
+            float _goalX = rand.Next(2990, 3100);
+            //float _goalY = rand.Next(-329, 380);
+            float _goalY = rand.Next(-200,300);
             //Console.WriteLine("Goal X: " + _goalX);
             //Console.WriteLine("Goal Y: " + _goalY);
-            PointF goal = new PointF(3067F, -200F);
-
+            PointF goal = new PointF(_goalX, _goalY);
             float orient =(float) GetNewOrientation(robot_id, goal);
             //PointF add = new PointF(500, 0F);
             //Console.WriteLine("New Ball X: "+(ball.X + add.X));
@@ -345,32 +387,64 @@ namespace SSLRig.Core.Intelligence.Planning
             double optimumDistanceFromGoal = 1672;
             if (CheckOrientation(robot_id, orient))
             {
-                
+
                 if (DistanceFromGoal(robot_id) <= optimumDistanceFromGoal)
                 {
-                    repo.OutData[robot_id].KickSpeed = (float)3.3;
+                    foreach (var robot in repo.InData.Own())
+                    {
+                        if (robot != null && (robot_id == robot.robot_id))
+                        {
+                            repo.OutData[(int)robot.robot_id].KickSpeed = 0F;
+                            repo.OutData[(int)robot.robot_id].ChipSpeed = 0F;
+                            repo.OutData[(int)robot.robot_id].Grab = true;
+                        }
+                    }
+                    repo.OutData[robot_id].ChipSpeed = 0F;
+                    /*repo.OutData[robot_id].KickSpeed = (float)3.3;*/
+                    //Kick(robot_id);
+                    HighKick(robot_id);
+                                        
                 }
                 else
                 {
-                    PointF goalpoints = new PointF(3067F, -200F);
-                    repo.OutData[robot_id].SetPoint(3067F, -200F, (float)GetNewOrientation(robot_id, goalpoints));
+                    //PointF goalpoints = new PointF(3067F, -200F);
+                    repo.OutData[robot_id].SetPoint(goal.X, goal.Y, (float)GetNewOrientation(robot_id, goal));
                 }
 
                 meraGlobalBool = false;
                 meraAkOrGlobalBool = false;
             }
-            if (meraGlobalBool)
+            else if(!CheckOrientation(robot_id, orient))
             {
-                Pass(robots[1],robots[0]);
+               // repo.OutData[robot_id].Reset();
+                repo.OutData[robot_id].SetPoint(repo.InData.Own()[robot_id].x, repo.InData.Own()[robot_id].y, orient );
             }
-            if (meraAkOrGlobalBool)
-            {
-                Pass(robots[0], robots[1]);
-            }
+            //if (meraGlobalBool)
+            //{
+            //    Pass(robots[1],robots[0]);
+            //}
+            //if (meraAkOrGlobalBool)
+            //{
+            //    Pass(robots[0], robots[1]);
+            //}
             
         }
         #endregion
-        
+
+        public void Kick(int robot_id)
+        {
+            SSL_DetectionRobot robot = repo.InData.Own()[robot_id];
+            repo.OutData[robot_id].KickSpeed = 3.3F;
+        }
+
+        public void HighKick(int robot_id)
+        {
+            SSL_DetectionRobot robot = repo.InData.Own()[robot_id];
+            repo.OutData[robot_id].ChipSpeed = 2F;
+            repo.OutData[robot_id].KickSpeed = 3.3F;
+        }
+
+
         public void Pass(SSL_DetectionRobot user, SSL_DetectionRobot partner)
         {
             PointF partnerlocation = new PointF(partner.x, partner.y);

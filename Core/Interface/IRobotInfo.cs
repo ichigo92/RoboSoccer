@@ -38,6 +38,7 @@ namespace SSLRig.Core.Interface
         bool Spin { set; get; }
 
         void SetPoint(float x, float y, float w);
+        void Reset();
         void ToIndividualWheels();
     }
 }
