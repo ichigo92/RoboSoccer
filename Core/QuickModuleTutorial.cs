@@ -13,12 +13,7 @@ namespace SSLRig.Core
 {
     public class QuickModuleTutorial
     {
-        //Yo, This is a (not so) standard tutorial on how to use the modules in the Rig project.
-        //All the modules are interface controlled, so make sure you know the basics of a C# interface
-        //Let's move some effing robots.
-        //So basically, here's what you need
-
-        //A receiver for receiving commands from SSL Vision Server.
+        
         private IPacketReceiver receiver; //= new SSLVisionReceiver(IPAddress.Parse("224.5.23.2"), 10002);
         //IPacketSender is an Interface, see?
         

@@ -18,8 +18,6 @@ namespace SSLRig.Core
 
 
             IRepository repository = new DataRepository(5, true, false);
-           // IPacketReceiver receiver = new SSLVisionReceiver(IPAddress.Parse("224.5.23.2"), 10002);
-           // IPacketSender sender = new GRSimSender(IPAddress.Parse("20.200.20.207"), 20011);
             IPacketReceiver receiver = new SSLVisionReceiver(IPAddress.Parse("224.5.23.2"), 10020);
             IPacketSender sender = new GRSimSender(IPAddress.Parse("192.168.0.3"), 20011);
             receiver.Connect();
@@ -34,11 +32,6 @@ namespace SSLRig.Core
                 controllers[i] = new PIDController(i);
                 ((IDataSource)controllers[i]).Repository = repository;
             }
-
-            //repository.InData.ParsePacket((SSL_WrapperPacket)receiver.Receive());
-            //planner.Plan();
-            //controllers[0].Compute();
-            //((ITask)sender).Execute();
             ITask anchor = (ITask)receiver;
             ITask reference = (ITask)planner;
             anchor.GetNext = () => new[] { reference };
